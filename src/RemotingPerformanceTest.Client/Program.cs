@@ -67,7 +67,7 @@ namespace RemotingPerformanceTest.Client
             var serverAddress = string.IsNullOrEmpty(serverIP) ? IPAddress.Loopback : IPAddress.Parse(serverIP);
             var sendAction = default(Action);
 
-            _client = new SocketRemotingClient(new IPEndPoint(serverAddress, 5000)).Start();
+            _client = new SocketRemotingClient("Client", new IPEndPoint(serverAddress, 5000)).Start();
 
             if (_mode == "Oneway")
             {
@@ -76,20 +76,6 @@ namespace RemotingPerformanceTest.Client
                     var request = new RemotingRequest(100, _message);
                     _client.InvokeOneway(request);
                     _performanceService.IncrementKeyCount(_mode, (DateTime.Now - request.CreatedTime).TotalMilliseconds);
-                };
-            }
-            else if (_mode == "Sync")
-            {
-                sendAction = () =>
-                {
-                    var request = new RemotingRequest(100, _message);
-                    var response = _client.InvokeSync(request, 5000);
-                    if (response.ResponseCode != 10)
-                    {
-                        _logger.Error(Encoding.UTF8.GetString(response.ResponseBody));
-                        return;
-                    }
-                    _performanceService.IncrementKeyCount(_mode, (DateTime.Now - response.RequestTime).TotalMilliseconds);
                 };
             }
             else if (_mode == "Async")
