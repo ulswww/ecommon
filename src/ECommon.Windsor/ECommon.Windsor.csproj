@@ -5,11 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Castle.Windsor" Version="4.1.0" />
+    <PackageReference Include="Castle.Windsor" Version="5.0.0" />
+    <PackageReference Include="ecommon" Version="2.6.4" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ECommon\ECommon.csproj" />
-  </ItemGroup>
 
 </Project>

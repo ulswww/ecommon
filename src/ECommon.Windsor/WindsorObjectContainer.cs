@@ -239,7 +239,7 @@ namespace ECommon.Configurations
             object instance = null;
             try
             {
-                instance = _container.Resolve(serviceType,serviceName);
+                instance = _container.Resolve(serviceName,serviceType);
 
                 return instance;
             }
@@ -261,7 +261,7 @@ namespace ECommon.Configurations
              instance = null;
             try
             {
-                instance = _container.Resolve(serviceType, serviceName);
+                instance = _container.Resolve(serviceName, serviceType);
 
                 return true;
             }
