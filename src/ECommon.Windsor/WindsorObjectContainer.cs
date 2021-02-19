@@ -49,7 +49,7 @@ namespace ECommon.Configurations
             }
             else
             {
-                registration = registration.NamedAutomatically(implementationType.ToString());
+                registration = registration.NamedAutomatically($"{implementationType.Name}_{Guid.NewGuid()}");
             }
 
             if (life != LifeStyle.Singleton)
@@ -79,7 +79,7 @@ namespace ECommon.Configurations
             }
             else
             {
-                registration = registration.NamedAutomatically(implementationType.ToString());
+                registration = registration.NamedAutomatically($"{implementationType.Name}_{Guid.NewGuid()}");
             }
 
             if (life != LifeStyle.Singleton)
@@ -111,7 +111,7 @@ namespace ECommon.Configurations
             }
             else
             {
-                registration = registration.NamedAutomatically(typeof(TImplementer).Name.ToString());
+                registration = registration.NamedAutomatically($"{typeof(TImplementer).Name}_{Guid.NewGuid()}");
             }
 
             if (life != LifeStyle.Singleton)
@@ -144,7 +144,7 @@ namespace ECommon.Configurations
             }
             else
             {
-                registration = registration.NamedAutomatically(typeof(TImplementer).Name.ToString());
+                registration = registration.NamedAutomatically($"{typeof(TImplementer).Name}_{Guid.NewGuid()}");
             }
 
 
